@@ -1,0 +1,42 @@
+﻿@page
+@model StarCleaningService_Identity.Pages.CreateToDoModel
+@{
+    //since DropDownLists aren't IEnumarable, cast is required
+    var CategoryListItems = ViewData["DDListCat"] as IEnumerable<SelectListItem>;
+    var PriorityListItems = ViewData["DDListPri"] as IEnumerable<SelectListItem>;
+
+}
+<h1>Create Service</h1>
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <b>Category</b> 
+                <select asp-for="TodoCategory" asp-items="CategoryListItems" class="form-control">
+                    <option value="null">--Select category--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <b>Importance</b>
+                <select asp-for="TodoPriority" asp-items="PriorityListItems" class="form-control">
+                    <option value="null">--Select importance--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="TodoTask" class="control-label"><b>Service You Request: Office / House</b></label>
+                <input asp-for="TodoTask" class="form-control" />
+                <span asp-validation-for="TodoTask" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TodoDeadline" class="control-label"><b>Deadline</b></label>
+                <input asp-for="TodoDeadline" class="form-control" />
+                <span asp-validation-for="TodoDeadline" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

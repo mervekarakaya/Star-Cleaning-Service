@@ -1,0 +1,45 @@
+﻿@page
+@model StarCleaningService_Identity.Pages.RateUserModel
+@{
+}
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Picture</th>
+                <th>Email</th>
+                <th>Phone number</th>
+                <th>Average rating</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.UserRatingsList)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td><img src="data:image;base64,@System.Convert.ToBase64String(item.Picture)" width="50" height="50" /></td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                    @if (item.AvgRating != "0")
+                    {
+                        <td>
+                            <p>User rating: @item.AvgRating/5.0</p>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <p>User has no rating</p>
+                        </td>
+                    }
+                <td>
+                    <!--ratedUserID is id of the user to be rated-->
+                    <a class="btn btn-primary" asp-page="AddRating" asp-route-ratedUserID="@item.UserId">Rate User</a>
+                </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

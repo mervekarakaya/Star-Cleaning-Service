@@ -1,0 +1,42 @@
+﻿@page
+@model StarCleaningService_Identity.Pages.ApproveToDoModel
+@{
+    ViewData["Title"] = "Approve Todos";
+}
+<h1>Approve Services</h1>
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Todos[0].Task)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Todos[0].Deadline)
+                </th>
+                <th>
+                    Is Approved?
+                </th>
+                <th>
+                    Approve
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Todos)
+            {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Task)</td>
+                <td>@Html.DisplayFor(modelItem => item.Deadline)</td>
+                <td>@Html.DisplayFor(modelItem => item.IsApproved)</td>
+                <td>
+                    @if (!item.IsApproved)
+                {
+                    <input type="submit" value="Approve Service" class="btn btn-primary" asp-route-id="@item.Id"/>
+                }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</form>

@@ -1,0 +1,40 @@
+﻿@page
+@model StarCleaningService_Identity.Pages.ListToDoModel
+@{
+    ViewData["Title"] = "List Todos";
+}
+<h1>Services</h1>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Todos[0].Task)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Todos[0].Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Todos[0].Priority)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Todos[0].Deadline)
+            </th>
+            <th>
+                Is Approved?
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Todos)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Task)</td>
+            <td>@Html.DisplayFor(modelItem => item.Category)</td>
+            <td>@Html.DisplayFor(modelItem => item.Priority)</td>
+            <td>@Html.DisplayFor(modelItem => item.Deadline)</td>
+            <td>@Html.DisplayFor(modelItem => item.IsApproved)</td>
+        </tr>
+        }
+    </tbody>
+</table>

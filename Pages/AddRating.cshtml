@@ -1,0 +1,29 @@
+﻿@page
+@model StarCleaningService_Identity.Pages.AddRatingModel
+@{
+}
+<!--Post back mechanism for radio buttons-->
+<script>
+    function DoPostBack() {
+        document.formRate.submit();
+    }
+</script>
+<form method="post" name="formRate">
+    <div class="rate">
+        <input asp-for="Rate" type="radio" id="star5" name="rate" value="5"
+               onchange="DoPostBack();" />
+        <label for="star5" title="text">5 stars</label>
+        <input asp-for="Rate" type="radio" id="star4" name="rate" value="4"
+               onchange="DoPostBack();" />
+        <label for="star4" title="text">4 stars</label>
+        <input asp-for="Rate" type="radio" id="star3" name="rate" value="3"
+               onchange="DoPostBack();" />
+        <label for="star3" title="text">3 stars</label>
+        <input asp-for="Rate" type="radio" id="star2" name="rate" value="2"
+               onchange="DoPostBack();" />
+        <label for="star2" title="text">2 stars</label>
+        <input asp-for="Rate" type="radio" id="star1" name="rate" value="1"
+               onchange="DoPostBack();" />
+        <label for="star1" title="text">1 star</label>
+    </div>
+</form>
